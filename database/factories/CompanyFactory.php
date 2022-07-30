@@ -18,6 +18,7 @@ class CompanyFactory extends Factory
     {
         return [
             'name' => $this->faker->name(),
+            'photo_path' => $this->faker->imageUrl(),
             'description' => $this->faker->paragraph()
         ];
     }

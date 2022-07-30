@@ -16,7 +16,7 @@ return new class extends Migration
         Schema::create('documents', function (Blueprint $table) {
             $table->id();
             $table->string('name');
-            $table->string('path');
+            $table->string('document_path');
 
             $table->foreignId('department_id')
             ->constrained('departments')

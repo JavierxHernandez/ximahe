@@ -18,7 +18,7 @@ class DocumentFactory extends Factory
     {
         return [
             'name' => $this->faker->name(),
-            'path' => $this->faker->imageUrl()
+            'document_path' => $this->faker->imageUrl()
         ];
     }
 }
