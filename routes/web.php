@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Livewire\Companies;
+use App\Http\Livewire\CompanyForm;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -16,6 +18,10 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::get('/companies', Companies::class)->name('companies.index');
+Route::get('/company/create', CompanyForm::class)->name('companies.create');
+Route::get('/company/{company}/edit', CompanyForm::class)->name('companies.edit');
 
 Route::middleware([
     'auth:sanctum',
