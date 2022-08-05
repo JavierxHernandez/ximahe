@@ -3,12 +3,11 @@
 namespace Database\Factories;
 
 use Illuminate\Database\Eloquent\Factories\Factory;
-use Illuminate\Support\Facades\File;
 
 /**
- * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Company>
+ * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\DocumentStatus>
  */
-class CompanyFactory extends Factory
+class DocumentStatusFactory extends Factory
 {
     /**
      * Define the model's default state.
@@ -17,15 +16,8 @@ class CompanyFactory extends Factory
      */
     public function definition()
     {
-        // $filepath = storage_path('companies');
-
-        // if(!File::exists($filepath)){
-        //     File::makeDirectory($filepath);
-        // }
-
         return [
             'name' => $this->faker->name(),
-            'image' => $this->faker->imageUrl(),
             'description' => $this->faker->paragraph()
         ];
     }

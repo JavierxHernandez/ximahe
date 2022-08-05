@@ -2,12 +2,11 @@
 
 namespace Database\Seeders;
 
-use App\Models\Company;
-use App\Models\Department;
+use App\Models\DocumentStatus;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
-class CompanySeeder extends Seeder
+class DocumentStatusSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -16,8 +15,6 @@ class CompanySeeder extends Seeder
      */
     public function run()
     {
-        Company::factory(16)
-            ->has(Department::factory()->count(4))
-            ->create();
+        DocumentStatus::factory(8)->create();
     }
 }

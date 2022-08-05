@@ -18,10 +18,21 @@ return new class extends Migration
             $table->string('name');
             $table->string('document_path');
 
-            $table->foreignId('department_id')
-            ->constrained('departments')
-            ->onUpdate('cascade')
-            ->onDelete('cascade');
+            $table->unsignedBigInteger('department_id');
+            $table->foreign('department_id')->references('id')->on('departments');
+
+            $table->unsignedBigInteger('document_status_id');
+            $table->foreign('document_status_id')->references('id')->on('document_statuses');
+
+            // $table->foreignId('department_id')
+            // ->constrained('departments')
+            // ->onUpdate('cascade')
+            // ->onDelete('cascade');
+
+            // $table->foreignId('document_status_id')
+            // ->constrained('document_statuses')
+            // ->onUpdate('cascade')
+            // ->onDelete('cascade');
 
             $table->timestamps();
         });
