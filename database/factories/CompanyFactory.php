@@ -25,7 +25,7 @@ class CompanyFactory extends Factory
 
         return [
             'name' => $this->faker->name(),
-            'image' => $this->faker->imageUrl(),
+            'image' => 'images/default-placeholder.png',
             'description' => $this->faker->paragraph()
         ];
     }

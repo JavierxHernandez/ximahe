@@ -1,10 +1,10 @@
 <div>
     <x-slot name="header">
-        <x-header title="Companies" :route="route('companies.create')" textButton="Create" info="false" />
+        <x-header title="Documents" :route="route('documents.create')" textButton="Create" info="false" />
     </x-slot>
 
     <div class="py-12">
-        <x-table :object="$companies" objectName="Compañias" route="companies.edit" />
+        <x-table-document :object="$documents" objectName="Documentos" route="documents.edit"/>
     </div>
 
     <x-jet-modal wire:model="showDeleteModal">

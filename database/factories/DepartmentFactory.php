@@ -18,7 +18,7 @@ class DepartmentFactory extends Factory
     {
         return [
             'name' => $this->faker->name(),
-            'photo_path' => $this->faker->imageUrl(),
+            'image' => 'images/default-placeholder.png',
             'description' => $this->faker->paragraph()
         ];
     }

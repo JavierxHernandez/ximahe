@@ -3,7 +3,6 @@
 namespace App\Http\Livewire;
 
 use App\Models\Company;
-use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Validation\Rule;
 use Livewire\Component;
@@ -15,6 +14,7 @@ class CompanyForm extends Component
 
     public Company $company;
     public $image;
+    public $defaultImage = 'images/default-placeholder.png';
     public $showDeleteModal = false;
 
 
@@ -23,7 +23,7 @@ class CompanyForm extends Component
         return [
             'company.name' => ['required'],
             'image' => [
-                Rule::requiredIf(! $this->company->image),
+                // Rule::requiredIf(! $this->company->image),
                 Rule::when($this->image, ['image', 'max:2048'])
             ],
             'company.description' => ['required']
@@ -47,13 +47,17 @@ class CompanyForm extends Component
 
     // CRUD
 
-    public function submit()
+    public function save()
     {
         $this->validate();
 
         if ($this->image) {
             $this->company->image = $this->uploadImage();
+        }else {
+            $this->company->image = $this->defaultImage;
         }
+
+
         $this->company->save();
 
         session()->flash('status', __('Company saved'));
@@ -65,11 +69,12 @@ class CompanyForm extends Component
 
     public function uploadImage()
     {
-        if ($oldImage = $this->company->image) {
+        $oldImage = $this->company->image;
+        if ($oldImage != $this->defaultImage) {
             Storage::disk('public')->delete($oldImage);
         }
 
-        return $this->image->store('/images/companies/', 'public');
+        return $this->image->store('images/companies/', 'public');
     }
 
 }

@@ -1,9 +1,9 @@
 <div>
     <x-slot name="header">
-        <x-header title="Update Company" :route="route('companies.index')" textButton="Show" info="true" />
+        <x-header title="Company" :route="route('companies.index')" textButton="" info="false" />
     </x-slot>
     <div class="max-w-7xl mx-auto py-10 sm:px-6 lg:px-8">
-        <x-jet-form-section submit="submit">
+        <x-jet-form-section submit="save">
             <x-slot name="title">
                 {{ __('New Company') }}
             </x-slot>

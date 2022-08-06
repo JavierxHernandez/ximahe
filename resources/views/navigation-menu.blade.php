@@ -11,6 +11,16 @@ if (Auth::user()) {
             'route' => route('companies.index'),
             'active' => request()->routeIs('companies.index'),
         ],
+        [
+            'name' => 'Departments',
+            'route' => route('departments.index'),
+            'active' => request()->routeIs('departments.index'),
+        ],
+        [
+            'name' => 'Documents',
+            'route' => route('documents.index'),
+            'active' => request()->routeIs('documents.index'),
+        ],
     ];
 } else {
     $nav_links = [

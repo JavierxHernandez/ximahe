@@ -15,4 +15,17 @@ class Document extends Model
     {
         return $this->belongsTo(Department::class);
     }
+
+    public function documentStatus()
+    {
+        return $this->belongsTo(DocumentStatus::class);
+    }
+
+    public static function search($search)
+    {
+        return empty($search) ? static::query()
+            : static::query()->where('id', 'like', '%'.$search.'%')
+                ->orWhere('name', 'like', '%'.$search.'%')
+                ->orWhere('description', 'like', '%'.$search.'%');
+    }
 }

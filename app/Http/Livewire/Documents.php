@@ -2,17 +2,18 @@
 
 namespace App\Http\Livewire;
 
-use App\Models\Company;
+use App\Models\Document;
 use Illuminate\Support\Facades\Storage;
 use Livewire\Component;
+use Livewire\WithFileUploads;
 use Livewire\WithPagination;
 
-class Companies extends Component
+class Documents extends Component
 {
     use WithPagination;
 
     public $showDeleteModal = false;
-    public $companyId;
+    public $departmentId;
     public $perPage = 10;
     public $search = '';
     public $orderBy = 'id';
@@ -20,8 +21,8 @@ class Companies extends Component
 
     public function render()
     {
-        return view('livewire.companies', [
-            'companies' =>  Company::search($this->search)
+        return view('livewire.documents', [
+            'documents' =>  Document::search($this->search)
             ->orderBy($this->orderBy, $this->orderAsc ? 'asc' : 'desc')
             ->paginate($this->perPage)
         ]);
@@ -29,10 +30,10 @@ class Companies extends Component
 
     // MODAL
 
-    public function openDeleteForm($companyId)
+    public function openDeleteForm($documentId)
     {
         $this->showDeleteModal = true;
-        $this->companyId = $companyId;
+        $this->documentId = $documentId;
     }
 
     public function closeDeleteForm()
@@ -42,13 +43,14 @@ class Companies extends Component
 
     public function delete()
     {
-        $companyToDelete = Company::find($this->companyId);
+        $documentToDelete = Document::find($this->documentId);
 
-        if ($companyToDelete->image != 'images/default-placeholder.png') {
-            Storage::disk('public')->delete($companyToDelete->image);
-        }
+        // if ($documentToDelete->document_path != 'documents/default-placeholder.png') {
+        //     Storage::disk('public')->delete($documentToDelete->document_path);
+        // }
 
-        $companyToDelete->delete();
+        Storage::disk('public')->delete($documentToDelete->document_path);
+        $documentToDelete->delete();
         $this->showDeleteModal = false;
         $this->emit('deleted');
     }
