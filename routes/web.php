@@ -23,17 +23,7 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/companies', Companies::class)->name('companies.index');
-Route::get('/company/create', CompanyForm::class)->name('companies.create');
-Route::get('/company/{company}/edit', CompanyForm::class)->name('companies.edit');
 
-Route::get('/departments', Departments::class)->name('departments.index');
-Route::get('/departments/create', DepartmentForm::class)->name('departments.create');
-Route::get('/departments/{department}/edit', DepartmentForm::class)->name('departments.edit');
-
-Route::get('/documents', Documents::class)->name('documents.index');
-Route::get('/documents/create', DocumentForm::class)->name('documents.create');
-Route::get('/documents/{document}/edit', DocumentForm::class)->name('documents.edit');
 
 Route::middleware([
     'auth:sanctum',
@@ -43,4 +33,16 @@ Route::middleware([
     Route::get('/dashboard', function () {
         return view('dashboard');
     })->name('dashboard');
+
+    Route::get('/companies', Companies::class)->name('companies.index');
+    Route::get('/company/create', CompanyForm::class)->name('companies.create');
+    Route::get('/company/{company}/edit', CompanyForm::class)->name('companies.edit');
+
+    Route::get('/departments', Departments::class)->name('departments.index');
+    Route::get('/departments/create', DepartmentForm::class)->name('departments.create');
+    Route::get('/departments/{department}/edit', DepartmentForm::class)->name('departments.edit');
+
+    Route::get('/documents', Documents::class)->name('documents.index');
+    Route::get('/documents/create', DocumentForm::class)->name('documents.create');
+    Route::get('/documents/{document}/edit', DocumentForm::class)->name('documents.edit');
 });
