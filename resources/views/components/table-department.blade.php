@@ -11,17 +11,17 @@
                 class="block appearance-none w-full bg-gray-200 border border-gray-200 text-gray-700 py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
                 id="grid-state">
                 <option value="id">ID</option>
-                <option value="name">Name</option>
-                <option value="description">Description</option>
-                <option value="created_at">Sign Up Date</option>
+                <option value="name">{{ __('Name') }}</option>
+                <option value="description">{{ __('Description') }}</option>
+                <option value="created_at">{{ __('Sign Up Date') }}</option>
             </select>
         </div>
         <div class="mr-2">
             <select wire:model="orderAsc"
                 class="block appearance-none w-full bg-gray-200 border border-gray-200 text-gray-700 py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
                 id="grid-state">
-                <option value="1">Ascending</option>
-                <option value="0">Descending</option>
+                <option value="1">{{ __('Ascending') }}</option>
+                <option value="0">{{ __('Descending') }}</option>
             </select>
         </div>
         <div>

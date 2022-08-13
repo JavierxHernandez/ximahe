@@ -74,11 +74,10 @@ class DepartmentForm extends Component
 
      public function uploadImage()
      {
-        $oldImage = $this->department->image;
-        if ($oldImage != $this->defaultImage) {
+        if ($oldImage = $this->department->file) {
             Storage::disk('public')->delete($oldImage);
         }
 
-         return $this->image->store('/images/departments', 'public');
+        return $this->image->store('images/departments/', 'public');
      }
 }

@@ -4,7 +4,8 @@
     <div id="table-options" class="grid grid-cols-4 my-2">
         <div class="mr-2">
             <input wire:model.debounce.300ms="search" type="text"
-                class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" placeholder="{{ __('Search') }} {{ $objectName }}...">
+                class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
+                placeholder="{{ __('Search') }} {{ $objectName }}...">
         </div>
         <div class="mr-2">
             <select wire:model="orderBy"
@@ -37,6 +38,15 @@
     </div>
     <div class="bg-white overflow-hidden shadow-xl sm:rounded-lg">
         <table class="border-collapse w-full">
+            @if ($object->isEmpty())
+                {{-- <tr
+                class="bg-white lg:hover:bg-gray-100 flex lg:table-row flex-row lg:flex-row flex-wrap lg:flex-no-wrap mb-10 lg:mb-0"> --}}
+                <div class="p-5 border">
+                    <p class="text-center text-gray-400">No hay documentos disponibles.</p>
+                </div>
+
+                {{-- </tr> --}}
+            @else
             <thead>
                 <tr>
                     <th
@@ -54,25 +64,25 @@
                     <th
                         class="p-3 font-bold uppercase bg-gray-200 text-gray-600 border border-gray-300 hidden lg:table-cell">
                         {{ __('Department') }}</th>
-                    <th
+                    {{-- <th
                         class="p-3 font-bold uppercase bg-gray-200 text-gray-600 border border-gray-300 hidden lg:table-cell">
-                        {{ __('Status') }}</th>
+                        {{ __('Status') }}</th> --}}
                     <th
                         class="p-3 font-bold uppercase bg-gray-200 text-gray-600 border border-gray-300 hidden lg:table-cell">
                         {{ __('Actions') }}</th>
                 </tr>
             </thead>
-            <tbody>
-                @foreach ($object as $model)
-                    <tr
-                        class="bg-white lg:hover:bg-gray-100 flex lg:table-row flex-row lg:flex-row flex-wrap lg:flex-no-wrap mb-10 lg:mb-0">
-                        <td
-                            class="w-full lg:w-auto p-3 text-gray-800 text-center border border-b block lg:table-cell relative lg:static">
-                            <span
-                                class="lg:hidden absolute top-0 left-0 bg-blue-200 px-2 py-1 text-xs font-bold uppercase">ID</span>
-                            {{ $model->id }}
-                        </td>
-                        {{-- <td
+                <tbody>
+                    @foreach ($object as $model)
+                        <tr
+                            class="bg-white lg:hover:bg-gray-100 flex lg:table-row flex-row lg:flex-row flex-wrap lg:flex-no-wrap mb-10 lg:mb-0">
+                            <td
+                                class="w-full lg:w-auto p-3 text-gray-800 text-center border border-b block lg:table-cell relative lg:static">
+                                <span
+                                    class="lg:hidden absolute top-0 left-0 bg-blue-200 px-2 py-1 text-xs font-bold uppercase">ID</span>
+                                {{ $model->id }}
+                            </td>
+                            {{-- <td
                             class="w-full lg:w-auto p-3 text-gray-800 text-center border border-b block lg:table-cell relative lg:static">
                             <span
                                 class="lg:hidden absolute top-0 left-0 bg-blue-200 px-2 py-1 text-xs font-bold uppercase">{{ __('Photo') }}</span>
@@ -81,57 +91,48 @@
                                     src="{{ Storage::url($model->image) }}">
                             </div>
                         </td> --}}
-                        <td
-                            class="w-full lg:w-auto p-3 text-gray-800 text-center border border-b block lg:table-cell relative lg:static">
-                            <span
-                                class="lg:hidden absolute top-0 left-0 bg-blue-200 px-2 py-1 text-xs font-bold uppercase">{{ __('name') }}</span>
-                            {{ $model->name }}
-                        </td>
-                        <td
-                        class="w-full lg:w-auto p-3 text-gray-800 text-center border border-b block lg:table-cell relative lg:static">
-                        <span
-                        class="lg:hidden absolute top-0 left-0 bg-blue-200 px-2 py-1 text-xs font-bold uppercase">{{ __('Description') }}</span>
-                        {{ Str::limit($model->description, 20) }}
-                    </td>
-                    <td
-                        class="w-full lg:w-auto p-3 text-gray-800 text-center border border-b block lg:table-cell relative lg:static">
-                        <span
-                            class="lg:hidden absolute top-0 left-0 bg-blue-200 px-2 py-1 text-xs font-bold uppercase">{{ __('Department') }}</span>
-                        {{ $model->department->name }}
-                    </td>
-                    <td
+                            <td
+                                class="w-full lg:w-auto p-3 text-gray-800 text-center border border-b block lg:table-cell relative lg:static">
+                                <span
+                                    class="lg:hidden absolute top-0 left-0 bg-blue-200 px-2 py-1 text-xs font-bold uppercase">{{ __('name') }}</span>
+                                {{ $model->name }}
+                            </td>
+                            <td
+                                class="w-full lg:w-auto p-3 text-gray-800 text-center border border-b block lg:table-cell relative lg:static">
+                                <span
+                                    class="lg:hidden absolute top-0 left-0 bg-blue-200 px-2 py-1 text-xs font-bold uppercase">{{ __('Description') }}</span>
+                                {{ Str::limit($model->description, 20) }}
+                            </td>
+                            <td
+                                class="w-full lg:w-auto p-3 text-gray-800 text-center border border-b block lg:table-cell relative lg:static">
+                                <span
+                                    class="lg:hidden absolute top-0 left-0 bg-blue-200 px-2 py-1 text-xs font-bold uppercase">{{ __('Department') }}</span>
+                                {{ $model->department->name }}
+                            </td>
+                            {{-- <td
                         class="w-full lg:w-auto p-3 text-gray-800 text-center border border-b block lg:table-cell relative lg:static">
                         <span
                             class="lg:hidden absolute top-0 left-0 bg-blue-200 px-2 py-1 text-xs font-bold uppercase">{{ __('Status') }}</span>
                             <div class="flex justify-center">
                                     <div style="padding-top: 0.1em; padding-bottom: 0.1rem" class="text-sm px-3 bg-green-200 text-black rounded-full w-24">{{ $model->documentStatus->name }}</div>
                             </div>
-                        </td>
-                        <td
-                            class="w-full lg:w-auto p-3 text-gray-800 text-center border border-b block lg:table-cell relative lg:static">
-                            <span
-                                class="lg:hidden absolute top-0 left-0 bg-blue-200 px-2 py-1 text-xs font-bold uppercase">{{ __('Actions') }}</span>
-                                <a href="{{ route($route, $model) }}">
-                                    <button
-                                        class="bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold py-2 px-4 rounded inline-flex items-center">
-                                        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none"
-                                            viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-                                            <path stroke-linecap="round" stroke-linejoin="round"
-                                                d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z" />
-                                        </svg>
-                                    </button>
-                                </a>
-                                <button type="button" wire:click="openDeleteForm({{ $model->id }})"
-                                    class="bg-red-300 hover:bg-red-400 text-gray-800 font-bold py-2 px-4 rounded inline-flex items-center">
+                        </td> --}}
+                            <td
+                                class="w-full lg:w-auto p-3 text-gray-800 text-center border border-b block lg:table-cell relative lg:static">
+                                <span
+                                    class="lg:hidden absolute top-0 left-0 bg-blue-200 px-2 py-1 text-xs font-bold uppercase">{{ __('Actions') }}</span>
+                                <button wire:click='export({{ $model }})'
+                                    class="bg-emerald-300 hover:bg-emerald-400 text-gray-800 font-bold py-2 px-4 rounded inline-flex items-center">
                                     <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none"
                                         viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
                                         <path stroke-linecap="round" stroke-linejoin="round"
-                                            d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" />
+                                            d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
                                     </svg>
                                 </button>
-                        </td>
-                    </tr>
-                @endforeach
+                            </td>
+                        </tr>
+                    @endforeach
+            @endif
             </tbody>
         </table>
     </div>

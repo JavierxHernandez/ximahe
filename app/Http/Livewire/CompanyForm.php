@@ -69,12 +69,13 @@ class CompanyForm extends Component
 
     public function uploadImage()
     {
-        $oldImage = $this->company->image;
-        if ($oldImage != $this->defaultImage) {
+
+        if ($oldImage = $this->company->file) {
             Storage::disk('public')->delete($oldImage);
         }
 
         return $this->image->store('images/companies/', 'public');
+
     }
 
 }

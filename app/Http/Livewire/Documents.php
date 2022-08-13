@@ -48,8 +48,7 @@ class Documents extends Component
         // if ($documentToDelete->document_path != 'documents/default-placeholder.png') {
         //     Storage::disk('public')->delete($documentToDelete->document_path);
         // }
-
-        Storage::disk('public')->delete($documentToDelete->document_path);
+        Storage::disk('public')->delete($documentToDelete->file);
         $documentToDelete->delete();
         $this->showDeleteModal = false;
         $this->emit('deleted');

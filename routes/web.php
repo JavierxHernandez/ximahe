@@ -1,11 +1,14 @@
 <?php
 
 use App\Http\Livewire\Companies;
+use App\Http\Livewire\CompanyCards;
 use App\Http\Livewire\CompanyForm;
 use App\Http\Livewire\Departments;
+use App\Http\Livewire\DepartmentCards;
 use App\Http\Livewire\DepartmentForm;
 use App\Http\Livewire\Documents;
 use App\Http\Livewire\DocumentForm;
+use App\Http\Livewire\DocumentHome;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -20,9 +23,12 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
-});
+    return view('home');
+})->name('home');
 
+Route::get('/company/cards', CompanyCards::class)->name('companies.cards');
+Route::get('/company/{company}/department/cards/', DepartmentCards::class)->name('departments.cards');
+Route::get('/department/{department}/documents/', DocumentHome::class)->name('documents.home');
 
 
 Route::middleware([
