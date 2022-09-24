@@ -18,7 +18,7 @@
         class="inline-flex items-center px-4 py-2 bg-green-800 border border-transparent rounded-md font-semibold text-xs text-white uppercase tracking-widest hover:bg-green-700 active:bg-gray-900 disabled:opacity-25 transition cursor-pointer"
         :class="{'outline-none border-gray-900 ring ring-gray-300': focused}"></label> --}}
         <x-loading target="file"/>
-        <b>{{ $name . Str::substr($existing, 50)  }}</b>
+        <b wire:loading.remove wire:target="file">{{ $name . Str::substr($existing, 50)  }}</b>
         </div>
         <label for="{{ $id }}"
         class="absolute bottom-2 right-2 inline-flex items-center px-4 py-2 bg-gray-800 border border-transparent rounded-md font-semibold text-xs text-white uppercase tracking-widest hover:bg-gray-700 active:bg-gray-900 disabled:opacity-25 transition cursor-pointer"

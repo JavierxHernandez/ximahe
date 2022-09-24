@@ -25,7 +25,7 @@
                     @foreach ($companies as $company)
                     <a href="{{ route('departments.cards', $company) }}">
                         <div class="h-100 max-w-sm bg-white rounded-lg border border-gray-200 shadow-md dark:bg-gray-800 dark:border-gray-700">
-                                <img class="rounded-t-lg w-64 h-64 object-cover" src="{{ Storage::url($company->image) }}" alt="" />
+                                <img class="rounded-t-lg w-full h-64 object-cover" src="{{ Storage::url($company->image) }}" alt="" />
                             <div class="p-5">
                                     <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">{{ $company->name }}</h5>
                                 <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">{{ Str::limit($company->description, 200) }}</p>

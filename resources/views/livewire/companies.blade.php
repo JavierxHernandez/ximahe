@@ -1,4 +1,5 @@
 <div>
+    {{-- <x-jet-banner /> --}}
     <x-slot name="header">
         <x-header title="Companies" :route="route('companies.create')" textButton="Create" info="false" />
     </x-slot>

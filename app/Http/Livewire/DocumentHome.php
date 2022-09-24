@@ -15,6 +15,7 @@ class DocumentHome extends Component
     public $search = '';
     public $orderBy = 'id';
     public $orderAsc = true;
+    public $previewModal = false;
 
     public function render()
     {
@@ -32,5 +33,15 @@ class DocumentHome extends Component
     public function export($document)
     {
         return Storage::disk('public')->download($document['file'], Str::replace(' ', '-', $document['name']));
+    }
+
+    public function openPreviewModal()
+    {
+        $this->previewModal = true;
+    }
+
+    public function closePreviewModal()
+    {
+        $this->previewModal = false;
     }
 }

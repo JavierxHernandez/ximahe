@@ -52,7 +52,7 @@
                 </div>
                 <x-slot name="actions">
                     <x-jet-button>
-                        {{ __('save') }}
+                        {{ __('Save') }}
                     </x-jet-button>
                 </x-slot>
             </x-slot>

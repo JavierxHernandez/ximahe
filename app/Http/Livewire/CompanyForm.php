@@ -53,14 +53,15 @@ class CompanyForm extends Component
 
         if ($this->image) {
             $this->company->image = $this->uploadImage();
-        }else {
+        }elseif ($this->company->image === null) {
             $this->company->image = $this->defaultImage;
         }
 
 
         $this->company->save();
 
-        session()->flash('status', __('Company saved'));
+        session()->flash('flash.banner', __('Company saved'));
+        session()->flash('flash.bannerStyle', 'success');
 
         return $this->redirectRoute('companies.index');
     }

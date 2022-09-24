@@ -75,7 +75,7 @@
                                 class="lg:hidden absolute top-0 left-0 bg-blue-200 px-2 py-1 text-xs font-bold uppercase">{{ __('Photo') }}</span>
                             <div class="flex justify-center">
                                 {{-- <img class="object-fil rounded-lg" src="{{ $model->image }}"> --}}
-                                <img class="object-fil rounded-lg w-20"
+                                <img class="object-fil rounded-lg w-24 h-24"
                                     src="{{ Storage::url($model->image) }}">
                             </div>
                         </td>

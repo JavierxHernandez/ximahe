@@ -59,13 +59,14 @@ class DepartmentForm extends Component
 
         if ($this->image) {
             $this->department->image = $this->uploadImage();
-        }else {
+        }elseif ($this->department->image === null) {
             $this->department->image = $this->defaultImage;
         }
 
         $this->department->save();
 
-        session()->flash('status', __('Department saved'));
+        session()->flash('flash.banner', __('Department saved'));
+        session()->flash('flash.bannerStyle', 'success');
 
         return $this->redirectRoute('departments.index');
     }

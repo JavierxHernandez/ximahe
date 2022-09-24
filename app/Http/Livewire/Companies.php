@@ -49,6 +49,10 @@ class Companies extends Component
         }
 
         $companyToDelete->delete();
+
+        session()->flash('flash.banner', __('Company saved'));
+        session()->flash('flash.bannerStyle', 'danger');
+
         $this->showDeleteModal = false;
         $this->emit('deleted');
     }

@@ -68,7 +68,8 @@ class DocumentForm extends Component
 
         $this->document->save();
 
-        session()->flash('status', __('Document saved'));
+        session()->flash('flash.banner', __('Document saved'));
+        session()->flash('flash.bannerStyle', 'success');
 
         return $this->redirectRoute('documents.index');
     }

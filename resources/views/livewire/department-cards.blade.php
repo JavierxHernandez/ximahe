@@ -22,14 +22,14 @@
                                 empresas</button></a>
                     </div>
                 @else
-                    <h1 class="font-extrabold text-xl my-5">Selecciona una departamento:</h1>
+                    <h1 class="font-extrabold text-xl my-5">Selecciona un departamento:</h1>
                     <div class="grid gap-4 md:gap-4 md:grid-cols-2 lg:gap-4 lg:grid-cols-4">
 
                         @foreach ($departments as $department)
                             <a href="{{ route('documents.home', $department) }}">
                                 <div
                                     class="h-100 max-w-sm bg-white rounded-lg border border-gray-200 shadow-md dark:bg-gray-800 dark:border-gray-700">
-                                    <img class="rounded-t-lg w-64 h-64 object-cover"
+                                    <img class="rounded-t-lg w-full h-64 object-cover"
                                         src="{{ Storage::url($department->image) }}" alt="" />
                                     <div class="p-5">
                                         <h5

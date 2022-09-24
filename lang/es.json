@@ -201,5 +201,15 @@
     "Departments": "Departamentos",
     "departments": "departamentos",
     "Documents": "Documentos",
-    "documents": "documentos"
+    "documents": "documentos",
+    "Admin Panel": "Panel Administrativo",
+    "Select Image": "Seleccionar imagen",
+    "Change Image": "Cambiar la imagen",
+    "Company saved": "Empresa guardada",
+    "Department saved": "Departamento guardado",
+    "Document saved": "Documento guardado.",
+    "Select company": "Seleccione la compañía",
+    "Select department": "Seleccione el departamento",
+    "Selected file": "Seleccione el documento",
+    "Select status": "Seleccione el estado"
 }
